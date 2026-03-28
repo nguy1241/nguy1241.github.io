@@ -9,51 +9,53 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 const last_posts = posts.slice(0, 3);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
+<BaseLayout title="Hung D. Nguyen" sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
     <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Manuel Ernesto</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
+    <div class="text-5xl font-bold">I'm Nguyen Dac Hung</div>
+    <div class="text-3xl py-3 font-bold">Astrophysicist/ Planetary Scientist and Digital Story-teller </div>
     <div class="py-2">
       <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
+        I'm an Astrophysics and Computational Math major at Michigan State University. I study the formation and evolution of planetary systems, 
+        using numerical simulations. Specifically, I am interested in the conditions of the protoplanetary disk
+        that lead to the formation of the Earth and the Giant Impact event which formed the Moon.
+        I also enjoy sharing my stories through media and film through my various social media platforms.
+        Feel free to check out my work in the socials tab below and connect with me on LinkedIn!
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
+      <a class="btn" href="https://www.linkedin.com/in/nguyen-dac-hung/" target="_blank"> Let's connect!</a>
+      <a href="https://www.instagram.com/nd_hung.films/" target="_blank" class="btn btn-outline ml-5">
+        My socials
       </a>
     </div>
   </div>
 
   <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2">MY RESEARCH 🪐</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
+    title="Giant Impact and Moon Accretion"
+    img=""
+    desc={`Using a N-body simulations combined with core-mantle differentiation models, I investigate 
+    the conditions of the protolunar disk following the Giant Impact event between Proto-Earth and Theia. 
+    We attempt to reconstruct the Lunar mantle's geochemistry from individual Moonlet impacts onto a target
+    body to see which sets of initial compositions of moonlets can best reproduce the observed Lunar mantle.`}
+    badge = 'NEW'
+    url = '#'
   />
+
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
+    title="Terrestrial Planet Formation"
+    img=""
+    desc={`We investigate various initial conditions in the protoplanetary disk such as accretion scenarios,
+    oxidation gradients in the disk, and compositions of planetary building blocks to constrain 
+    the evolution of terrestrial planets. Our goal is to answer these questions: 
+    How did the Solar system form? What dynamical pathways led to the formation of the Earth? What was
+    the geochemistry of the material that formed the Earth?`}
+    url = '#'
   />
 
   <div>

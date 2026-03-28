@@ -3,16 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title="CV" sideBarActiveItemID="cv">
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
   <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Honors Astrophysics and Computational Math at Michigan State University with a minor in Data Science.
+    Researching terrestrial planet formation using numerical simulations by leveraging
+    high-performance computing at the Institute for Cyber-Enabled Research (ICER). Recipient of 
+    many awards including the College of Natural Science Summer Research
+    Award (2025) and the Cornerstone Undergraduate Research Award (2024).
+    Passionate about space, learning languages, and videography
   </div>
 
   <div class="mb-5">
@@ -21,51 +23,128 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
+      title="B.S. Honors Astrophysics and Computational Math"
+      subtitle="Aug 2023 to May 2027 at Michigan State University, East Lansing, MI, USA"
+
     />
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
+      title="High School Diploma and A-Levels"
+      subtitle="Aug 2019 to May 2023 at Nguyen Sieu School, Hanoi, Vietnam"
     />
   </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
 
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-  </div>
+<div class="mb-5">
+  <div class="text-3xl w-full font-bold">PUBLICATIONS AND ABSTRACTS</div>
+</div>
+
+<div class="time-line-container mb-10">
+
+  <TimeLineElement
+    title="Theia can arrive late and be oxidized, but not if it is large compared to proto-Earth"
+    subtitle="Seth A. Jacobson, Gabriel Nathan, and Hung D. Nguyen"
+  >
+    <li>Submitted to the Europlanet Science Congress-Division for Planetary Sciences 2025 in Helsinki, Finland</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="Oxidation gradient in the protoplanetary disk: Piecewise or Smooth?"
+    subtitle="Hung D. Nguyen, Gabriel Nathan, and Seth A. Jacobson"
+  >
+    <li>Submitted to the Lunar and Planetary Science Conference 2025 in Woodlands, USA</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="Varying solar system formation scenarios successfully build Earth if initial accreted material is reduced and later accreted material is oxidized"
+    subtitle="Gabriel Nathan, Hung D. Nguyen, and Seth A. Jacobson"
+  >
+    <li>Submitted to the Lunar and Planetary Science Conference 2025 in Woodlands, USA</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="Solar system formation scenarios effect on ideal redox state of disk needed to produce Earth"
+    subtitle="Gabriel Nathan, Hung D. Nguyen, and Seth A. Jacobson"
+  >
+    <li>Submitted to the Goldschmidt Conference 2024 in Chicago, USA</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="How does the oxidation state of accreted bodies change between different terrestrial planet formation scenarios to reproduce the Earth’s mantle"
+    subtitle="Gabriel Nathan, Hung D. Nguyen, and Seth A. Jacobson"
+  >
+    <li>Submitted to the Earth and Planets Origin and Evolution 2024 in Paris, France</li>
+  </TimeLineElement>
+
+</div>
+
+
+<div class="mb-5">
+  <div class="text-3xl w-full font-bold">Experience</div>
+</div>
+
+<div class="time-line-container mb-10">
+
+  <TimeLineElement
+    title="Professorial Assistantship at Michigan State University"
+    subtitle="From Sep 2023 to Present at Michigan State University, East Lansing, MI"
+  >
+    <li>Conducted research in Dr. Seth Jacobson’s lab on terrestrial planet formation through simulations of planetary accretion and planetary interior geochemistry.</li>
+    <li>Leveraged the High-Performance Computing Cluster using Bash, Fortran, C++, and Slurm.</li>
+    <li>Created Python and Bash scripts to automate and analyze over 600 Solar System formation simulations.</li>
+    <li>Participated in weekly seminars and meetings, reviewed literature, and collaborated with other researchers.</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="Data/AI Engineer Intern at Kyanon Digital"
+    subtitle="From Jun 2024 to Aug 2024 at Kyanon Digital, Hanoi, Vietnam"
+  >
+    <li>Investigated anomaly detection in loyalty and promotion data to combat program abuse.</li>
+    <li>Applied statistical and machine learning methods (Isolation Forest, Logistic Regression, SVM) to identify anomalies in large transaction datasets.</li>
+    <li>Collaborated with senior engineers to fine-tune models using Scikit-learn and PyCaret.</li>
+    <li>Presented research to the Department of AI Research; system highlighted for potential use by clients like Starbucks and NutriAsia.</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="Cultural Ambassador at 19 Nguyen Sieu"
+    subtitle="From Jul 2024 to Jan 2025 at 19 Nguyen Sieu, Hanoi, Vietnam"
+  >
+    <li>Hosted international guests at a Vietnamese cultural heritage site, introducing local history and cuisine.</li>
+    <li>Facilitated multilingual communication in English, Vietnamese, and Chinese to support an inclusive visitor experience.</li>
+    <li>Navigated sensitive topics like the Vietnam War with diplomacy and cultural awareness.</li>
+  </TimeLineElement>
+
+  <TimeLineElement
+    title="IGCSE Physics and College Essay Tutor (Self-Employed)"
+    subtitle="From Jun 2023 to Jun 2024 in Hanoi, Vietnam"
+  >
+    <li>Tutored 3 IGCSE Physics students and 5 university applicants for US, UK, and Australian institutions.</li>
+    <li>Designed study guides and held bi-weekly sessions; students achieved A/A* scores.</li>
+    <li>Edited and proofread over 20 essays that supported successful applications to Monash University, Fordham University, and the University of Manchester.</li>
+  </TimeLineElement>
+
+</div>
+
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
+    <div class="text-3xl w-full font-bold">Awards</div>
   </div>
 
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
+      <a href="#" target="_blank"> College of Natural Science Summer Research Award (Summer 2025)</a>
     </li>
     <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
+      <a href="#" target="_blank"> Honors College Travel Grant (Spring 2025)</a>
     </li>
+    <li>
+      <a href="#" target="_blank"> Earth and Environmental Sciences Travel Grant (Spring 2025)</a>
+    </li>
+    <li>
+      <a href="#" target="_blank">Cornerstone Undergraduate Research Award (Spring 2024) </a>
+    <li>
+      <a href="#" target="_blank"> Professorial Assistantship (Fall 2023 - Spring 2025)</a>
+    </li>
+
   </ul>
 
   <div class="mb-5">
