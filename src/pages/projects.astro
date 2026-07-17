@@ -5,36 +5,49 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 
 <BaseLayout title = "Projects" sideBarActiveItemID="projects">
   <div>
-    <div class="text-3xl w-full font-bold mb-5">Projects Header</div>
+    <div class="text-3xl w-full font-bold mb-5">MY RESEARCH 🪐</div>
   </div>
 
   <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title="Protoplanetary Disk Modelling"
+    img="/HD163296.webp"
+    desc="Understanding dust around a protoplanetary disk provides crucial insight into planetary
+    formation processes. Multi-wavelength observations allow us to constrain the temperature,
+    density, and distribution of the dust. Specifically, in the disk HD 163296, a perculiar dichotomy is 
+    observed, with an outer ring being visible in the millimeter-wavelength, but invisible in the infrared.
+    Here, we construct a self-consistent thick disk structure model from first principles to see if this
+    dichotomy can be reproduced."
     url="#"
     badge="NEW"
   />
   <div class="divider my-0"></div>
   <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title="Giant Impact and Moon Accretion"
+    img="/lunar_formation.webp"
+    desc="Using a N-body simulations combined with core-mantle differentiation models, I investigate 
+    the conditions of the protolunar disk following the Giant Impact event between Proto-Earth and Theia. 
+    We attempt to reconstruct the Lunar mantle's geochemistry from individual Moonlet impacts onto a target
+    body to see which sets of initial compositions of moonlets can best reproduce the observed Lunar mantle."
     url="#"
+    badge="In preparation"
   />
 
-  <div>
+  <!-- <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Projects Header</div>
-  </div>
+  </div> -->
 
   <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    title="Terrestrial Planet Formation"
+    img="/earth_formation.webp"
+    desc="We investigate various initial conditions in the protoplanetary disk such as accretion scenarios,
+    oxidation gradients in the disk, and compositions of planetary building blocks to constrain 
+    the evolution of terrestrial planets. Our goal is to answer these questions: 
+    How did the Solar system form? What dynamical pathways led to the formation of the Earth? What was
+    the geochemistry of the material that formed the Earth?"
     url="#"
-    badge="FOSS"
+    badge="Submitted"
   />
-  <div class="divider my-0"></div>
+  <!-- <div class="divider my-0"></div>
   <HorizontalCard
     title="Demo Project 4"
     img="/post_img.webp"
@@ -47,5 +60,5 @@ import HorizontalCard from "../components/HorizontalCard.astro";
     img="/post_img.webp"
     desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     url="#"
-  />
+  /> -->
 </BaseLayout>

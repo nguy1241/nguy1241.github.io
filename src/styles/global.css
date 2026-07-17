@@ -1,3 +1,12 @@
+body {
+    letter-spacing: -0.02em
+}
+.py-2 {
+    text-align: justify;
+}
+html{
+    font-size: 14px;
+}
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }

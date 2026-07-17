@@ -11,29 +11,61 @@ const last_posts = posts.slice(0, 3);
 
 <BaseLayout title="Hung D. Nguyen" sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Nguyen Dac Hung</div>
-    <div class="text-3xl py-3 font-bold">Astrophysicist/ Planetary Scientist and Digital Story-teller </div>
-    <div class="py-2">
+    <!-- <div class="text-xl py-1">Hey there 👋</div> -->
+    <div class="text-5xl font-bold text-center">Nguyen Dac Hung</div>
+    <div class="text-3xl py-3 italic text-center">Astrophysicist and Digital Story-teller </div>
+
+    <div class="flex flex-col md:flex-row items-center gap-8 mt-6">
+      <img 
+        src="/index.webp"
+        alt="Nguyen Dac Hung"
+        class="w-48 h-48 md:w-64 md:h-64 object-cover flex-shrink-0"
+      />
+      <div class="py-2 text-justify">
       <text class="text-lg">
-        I'm an Astrophysics and Computational Math major at Michigan State University. I study the formation and evolution of planetary systems, 
-        using numerical simulations. Specifically, I am interested in the conditions of the protoplanetary disk
-        that lead to the formation of the Earth and the Giant Impact event which formed the Moon.
-        I also enjoy sharing my stories through media and film through my various social media platforms.
-        Feel free to check out my work in the socials tab below and connect with me on LinkedIn!
+        I'm a senior at Michigan State University studying Astrophysics and Computational Math. 
+        I'm from Hanoi, Vietnam, but I also grew up in London and Beijing. I study the formation 
+        and evolution of planetary systems using numerical simulations. Specifically, I'm interested
+        in modeling planet forming environments such as protoplanetary disks. I also enjoy sharing my 
+        stories through film online. Feel free to check out my work in the socials tab below and 
+        connect with me on LinkedIn!
       </text>
+      </div>
     </div>
     <div class="mt-8">
       <a class="btn" href="https://www.linkedin.com/in/nguyen-dac-hung/" target="_blank"> Let's connect!</a>
-      <a href="https://www.instagram.com/nd_hung.films/" target="_blank" class="btn btn-outline ml-5">
-        My socials
-      </a>
+      <a href="https://www.instagram.com/nd_hung.films/" target="_blank" class="btn btn-outline ml-5">My socials</a>
+      <a href="https://github.com/nguy1241" target="_blank" class="btn btn-outline ml-5">GitHub</a>
     </div>
   </div>
 
   <div>
     <div class="text-3xl w-full font-bold mb-2">MY RESEARCH 🪐</div>
   </div>
+
+  <div class="py-2">
+  <text class="text-lg">
+    With numerical simulations, I have done a number of  
+    I am interested in the conditions of the protoplanetary disk that lead to the formation of the Earth 
+    and the Giant Impact event which formed the Moon.
+  </text>
+</div>
+
+
+
+<!-- 
+  <HorizontalCard
+    title="Protoplanetary Disk Modelling"
+    img=""
+    desc={`Understanding dust around a protoplanetary disk provides crucial insight into planetary
+    formation processes. Multi-wavelength observations allow us to constrain the temperature,
+    density, and distribution of the dust. Specifically, in the disk HD 163296, a perculiar dichotomy is 
+    observed, with an outer ring being visible in the millimeter-wavelength, but invisible in the infrared.
+    Here, we construct a self-consistent thick disk structure model from first principles to see if this
+    dichotomy can be reproduced.`}
+    badge = 'NEW'
+    url = '#'
+  />
 
   <HorizontalCard
     title="Giant Impact and Moon Accretion"
@@ -42,7 +74,6 @@ const last_posts = posts.slice(0, 3);
     the conditions of the protolunar disk following the Giant Impact event between Proto-Earth and Theia. 
     We attempt to reconstruct the Lunar mantle's geochemistry from individual Moonlet impacts onto a target
     body to see which sets of initial compositions of moonlets can best reproduce the observed Lunar mantle.`}
-    badge = 'NEW'
     url = '#'
   />
 
@@ -56,8 +87,8 @@ const last_posts = posts.slice(0, 3);
     How did the Solar system form? What dynamical pathways led to the formation of the Earth? What was
     the geochemistry of the material that formed the Earth?`}
     url = '#'
-  />
-
+  /> -->
+<!-- 
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
   </div>
@@ -76,5 +107,5 @@ const last_posts = posts.slice(0, 3);
         <div class="divider my-0" />
       </>
     ))
-  }
+  } -->
 </BaseLayout>
