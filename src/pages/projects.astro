@@ -6,6 +6,7 @@ const statusStyle = {
   "Ongoing": "badge-info",
   "In preparation": "badge-warning",
   "Submitted": "badge-secondary",
+  "Accepted": "badge-success",
   "Published": "badge-success",
 };
 
@@ -15,41 +16,24 @@ const projects = [
     short: "Disk dust & shadows",
     emoji: "🪐",
     title: "Dust, heat and shadows in the HD 163296 disk",
-    subtitle: "A self-consistent thick-disk model of a planet-forming system",
     status: "Ongoing",
     place: "Max Planck Institute for Astronomy",
     when: "Summer 2026",
-    team: "Advisors: Kiyoaki Doi and Haochang Jiang",
-    question:
-      "Why is the outer ring of HD 163296 bright at millimeter wavelengths but invisible in near-infrared scattered light?",
-    plain: [
-      "Planets are born in disks of gas and dust around young stars, and telescopes see that dust in two very different ways. ALMA detects the faint heat glow of millimeter-sized grains near the disk's midplane, while infrared instruments such as SPHERE see starlight bouncing off tiny grains at the disk's surface.",
-      "In HD 163296 the two views disagree. ALMA shows a set of bright concentric rings, yet in scattered light the outer ring is simply missing. Recent multi-wavelength ALMA analysis (Doi et al.) also finds that ring to be colder than a simple, passively heated disk should be. Our working hypothesis is that a puffed-up, hot inner disk casts a shadow over the outer disk, leaving it cold and unlit in scattered light even though its settled dust still glows in the millimeter.",
+    team: "Advised by Kiyoaki Doi, Haochang Jiang and Myriam Benisty",
+    overview: [
+      "HD 163296 has an outer ring that ALMA sees clearly at millimeter wavelengths, but SPHERE can't find it in scattered light. It is also colder than a passively heated disk should be. Our idea is that a puffed-up inner disk is casting a shadow over it.",
+      "To test that, I built a model where the gas density, dust settling and RADMC-3D temperature are iterated until they agree. The first runs wouldn't converge because noise kept building up in the optically thick inner disk, so I extrapolated the temperature inward from a power-law fit, which fixed it. The converged model now reproduces the near-infrared rings, and a dip in turbulence is enough to make the disk shadow itself.",
     ],
-    approach: [
-      { icon: "🧱", label: "Gas", text: "Hydrostatic equilibrium, the balance between gravity and pressure, sets the vertical density of the gas." },
-      { icon: "🌪️", label: "Dust", text: "Grains sink toward the midplane while turbulence (strength α) stirs them back up. Balancing the two sets how thick the dust layer is for each grain size." },
-      { icon: "🌡️", label: "Temperature", text: "RADMC-3D, a Monte Carlo radiative-transfer code, calculates how starlight heats the dust." },
-      { icon: "🔁", label: "Self-consistency", text: "Temperature depends on density and density depends on temperature, so the model is iterated until both stop changing." },
+    numbers: [
+      { value: "10⁻⁵ – 10⁻¹", label: "turbulence strengths (α) tested" },
+      { value: "2.18 μm", label: "synthetic polarized images compared with SPHERE" },
     ],
-    did: [
-      "Built and ran the iterative density–temperature pipeline, using the observed dust surface-density profile as input and exploring turbulence strengths from α = 10⁻⁵ to 10⁻¹.",
-      "Diagnosed why runs would not converge. The inner-ring temperature oscillated because noise accumulated in the optically thick inner disk.",
-      "Tested fixes: reducing the inner-disk (< 50 au) dust by 95%, removing it entirely, and extrapolating the temperature inward from a power law fitted at 8–12 au for each polar angle.",
-      "Generated synthetic polarized-light images at 2.18 μm and compared them with the SPHERE observation.",
-    ],
-    found: [
-      "Extrapolating the temperature inward removes the numerical noise, and the models converge.",
-      "Using the dust parameters of Muro-Arena et al. (2018), the converged model reproduces the near-infrared ring structure seen with SPHERE.",
-      "Lower turbulence lets large grains settle, which cools the midplane. Large grains dominate cooling, while small grains dominate heating.",
-      "A dip in turbulence can create self-shadowing. A taller inner disk blocks stellar light, so the outer ring stays dark in scattered light.",
-    ],
-    note: "Work in progress. These results are preliminary, and settling in disks is a complicated process that we are still characterizing.",
+    note: "Preliminary. Dust settling is messy, and we're still working it out.",
     figures: [
-      { src: "/research/hd163296-observed-dichotomy.webp", alt: "ALMA millimeter image of HD 163296 showing several bright rings next to a SPHERE near-infrared image where the outer ring is absent", caption: "The puzzle. ALMA at 1.25 mm (left, Isella et al. 2018) shows the outer rings, but SPHERE at 1.6 μm (right, Muro-Arena et al. 2018) does not." },
-      { src: "/research/hd163296-self-shadowing.webp", alt: "Diagram of a hot puffed-up inner disk shadowing a cold settled outer disk", caption: "The hypothesis. A puffed-up inner region intercepts starlight and shadows a cold, settled outer disk." },
-      { src: "/research/hd163296-self-consistent-loop.webp", alt: "Flow chart showing temperature, dust density and RADMC-3D feeding into each other until convergence", caption: "The method. Temperature and dust density are solved in a loop until they agree." },
-      { src: "/research/hd163296-model-vs-observation.webp", alt: "Synthetic model polarized-light image next to the SPHERE observation of HD 163296", caption: "The test. The model's polarized-light image (left) compared with the SPHERE observation (right)." },
+      { src: "/research/hd163296-observed-dichotomy.webp", alt: "ALMA millimeter image of HD 163296 showing several bright rings next to a SPHERE near-infrared image where the outer ring is absent", caption: "ALMA at 1.25 mm (left, Isella et al. 2018) sees the outer rings. SPHERE at 1.6 μm (right, Muro-Arena et al. 2018) doesn't." },
+      { src: "/research/hd163296-self-shadowing.webp", alt: "Diagram of a hot puffed-up inner disk shadowing a cold settled outer disk", caption: "The hypothesis: a puffed-up inner disk shadows a cold, settled outer disk." },
+      { src: "/research/hd163296-self-consistent-loop.webp", alt: "Flow chart showing temperature, dust density and RADMC-3D feeding into each other until convergence", caption: "Temperature and dust density are solved in a loop until they agree." },
+      { src: "/research/hd163296-model-vs-observation.webp", alt: "Synthetic model polarized-light image next to the SPHERE observation of HD 163296", caption: "Model polarized-light image (left) next to SPHERE (right)." },
     ],
     links: [],
   },
@@ -57,41 +41,25 @@ const projects = [
     id: "moon",
     short: "Moon formation",
     emoji: "🌕",
-    title: "Building the Moon from a Theia-core remnant",
-    subtitle: "Which raw materials give the Moon its mantle chemistry and tiny iron core?",
+    title: "Building the Moon around a piece of Theia's core",
     status: "In preparation",
     place: "Michigan State University",
-    when: "Lead author",
+    when: "First author",
     team: "With Gabriel I. Nathan (NASA JPL) and Seth A. Jacobson (MSU)",
-    question:
-      "What must the Moon's building blocks have looked like to produce its iron-bearing mantle and its very small core?",
-    plain: [
-      "The Moon likely formed from debris after a Mars-sized planet, Theia, struck the young Earth. Simulations of that impact can reproduce the orbit and spin of the Earth–Moon system, but the Moon's chemistry is a much harder test. Its mantle holds about 9 wt% iron oxide (FeO) and 47 wt% silica (SiO₂), while its metallic core is only about 1.7% of its mass.",
-      "There is a second puzzle. Earth and Moon are nearly identical in their isotopes, which hints that the Moon is made mostly of Earth material. We asked what the Moon's ingredients, and the seed it grew around, would have to be for a growing Moon to end up with the right mantle and core.",
+    overview: [
+      "Giant-impact simulations get the Earth–Moon orbit right, but the Moon's chemistry is harder. Its mantle has about 9 wt% FeO and its core is tiny. On top of that, the Moon and Earth have almost the same isotopes.",
+      "I grew Moons one moonlet at a time, letting metal sink to the core after each impact, and tried three recipes for what the moonlets were made of. Pure Earth-mantle disks never worked, and neither did well-mixed Earth–Theia disks. Growing the Moon around a leftover piece of Theia's core did. It fits the FeO, the SiO₂ and the core size together, while keeping the Moon mostly Earth material.",
     ],
-    approach: [
-      { icon: "🌑", label: "Grow a Moon", text: "A Moon forms from 100 equal moonlets, each 0.01 lunar masses, that merge one at a time. Each impact melts material, metal and silicate equilibrate, iron sinks to the core, and the rest joins the mantle." },
-      { icon: "🧪", label: "Three recipes", text: "(1) A pure bulk-silicate-Earth disk with a redox gradient. (2) A well-mixed disk of proto-Earth mantle, Theia mantle (from five Solar System analogs) and Theia core. (3) The same mixtures, but with the Moon growing around a metal-rich Theia-core remnant." },
-      { icon: "📏", label: "Scoring", text: "Each simulated Moon is scored against the observed mantle FeO and SiO₂ and the core mass fraction. A χ² below 2 counts as success." },
-      { icon: "💧", label: "Water", text: "Initial water content was varied from 0.02 to 20 wt%, across thousands of simulations." },
+    numbers: [
+      { value: "1.7%", label: "of the Moon's mass is core, the target to hit" },
+      { value: "> 80%", label: "proto-Earth material in the best-fit Moons" },
+      { value: "1000s", label: "of simulations, with water from 0.02 to 20 wt%" },
     ],
-    did: [
-      "Designed the three accretion experiments and adapted the core–mantle differentiation model to grow Moon analogs.",
-      "Ran and analyzed thousands of simulations, searching parameter space with a least-squares fit for each Theia composition.",
-      "Built the goodness-of-fit framework and made the figures.",
-      "Led the writing as first author.",
-    ],
-    found: [
-      "A disk of bulk-silicate Earth alone cannot reproduce the Moon. It never reaches the lunar FeO, and its cores range from about 2.3 wt% up to 6.5–7.9 wt%, against the observed 1.7 wt%.",
-      "Well-mixed disks either make no core at all or a core far too large. A Mars-like Theia mantle came closest but still failed.",
-      "Growing the Moon around a Theia-core remnant satisfies all three constraints at once while more than 80% of the Moon comes from proto-Earth material.",
-      "Drier source material fits better. Wet disks (≥ 2 wt% water) tended to form no core.",
-    ],
-    note: "A Theia-core remnant is a proposal, not a measurement. It points to a grazing, high-velocity impact as one way to leave Theia's core in orbit while building the Moon mostly from Earth material. That would also ease the Earth–Moon isotopic puzzle. Testing it will need realistic impact simulations.",
+    note: "A Theia-core remnant is a proposal. It points to a grazing, high-velocity impact, which still needs to be tested with impact simulations.",
     figures: [
-      { src: "/research/moon-experiment-schematic.webp", alt: "Schematic of three experiments building a Moon from moonlets of different compositions", caption: "Three recipes for the Moon. An Earth-only disk, mixed Earth–Theia disks, and a Moon grown around a Theia-core seed." },
-      { src: "/research/moon-bse-disk-fails.webp", alt: "Plots of core mass, FeO and SiO2 versus initial water for Earth-only disks and disks with added metal", caption: "Earth-only disks (top) never form a core and fall short of the lunar FeO. Adding a small metallic component (bottom) lets dry models match the core size. Grey bands show observations." },
-      { src: "/research/moon-theia-core-seed-fits.webp", alt: "Goodness of fit versus first-body metal fraction for five Theia compositions", caption: "Fit quality (χ², lower is better) when the Moon grows from a Theia-core remnant. Different colors are different Theia compositions." },
+      { src: "/research/moon-experiment-schematic.webp", alt: "Schematic of three experiments building a Moon from moonlets of different compositions", caption: "Three recipes: an Earth-only disk, mixed Earth–Theia disks, and a Moon grown around a Theia-core seed." },
+      { src: "/research/moon-theia-core-seed-fits.webp", alt: "Goodness of fit versus first-body metal fraction for five Theia compositions", caption: "Fit quality (χ², lower is better) for a Moon grown around a Theia-core remnant, for five Theia compositions." },
+      { src: "/research/moon-bse-disk-fails.webp", alt: "Plots of core mass, FeO and SiO2 versus initial water for Earth-only disks and disks with added metal", caption: "Earth-only disks (top) miss the lunar FeO and core. Adding a little metal (bottom) helps dry models. Grey bands are observations." },
     ],
     links: [],
   },
@@ -99,42 +67,26 @@ const projects = [
     id: "earth",
     short: "Earth & Theia",
     emoji: "🌍",
-    title: "Earth's chemical history and the size of Theia",
-    subtitle: "Multi-stage core formation across competing Solar System formation scenarios",
-    status: "Submitted",
+    title: "Earth's accretion history across various formation scenarios",
+    status: "Accepted",
     place: "NASA JPL and Michigan State University",
-    when: "Second author",
-    team: "First author: Gabriel I. Nathan (NASA JPL). With Seth A. Jacobson (MSU)",
-    question:
-      "What must the chemistry of the early Solar System have been for Earth's mantle to come out as it did, and what does that say about Theia?",
-    plain: [
-      "Earth's mantle carries a chemical record of how the planet grew. As embryos collided, each giant impact melted rock, and iron-rich metal sank to the core and took certain elements with it. What stays in the mantle depends on how much oxygen was around (the redox state). Mercury is almost entirely metal, while Mars and the asteroid belt are far more oxidized, so the disk probably had a redox gradient with distance from the Sun.",
-      "We took 164 simulated Earth-like planets from six competing theories of terrestrial planet formation and asked, for each one, what disk chemistry would make its mantle match the real Earth.",
+    when: "Second author · Icarus",
+    team: "Led by Gabriel I. Nathan (NASA JPL), with Seth A. Jacobson (MSU)",
+    overview: [
+      "Earth's mantle keeps a record of how much oxygen was around while the planet grew. We took simulated Earths from six different planet-formation scenarios and solved backwards for the disk chemistry each one needed to end up like the real Earth.",
+      "All six scenarios can work. What they have in common is that Earth swept up more and more oxidized material as it grew, with a sharp switch from reduced to oxidized material near 1 au. The fits also point to a fairly small Theia.",
     ],
-    approach: [
-      { icon: "🪐", label: "Six scenarios", text: "Grand Tack, Circular and Eccentric Jupiter–Saturn, Truncated Disk, Steep Profile and Ring models, giving 164 viable Earth analogs." },
-      { icon: "⚗️", label: "Multi-stage core formation", text: "Every impact makes a melt pond where metal and silicate equilibrate. Mass is balanced and element partitioning follows laboratory experiments." },
-      { icon: "🎚️", label: "Inverse problem", text: "Instead of asking what a given disk produces, we search for the disk redox gradient and equilibration pressure that best reproduce Earth, using hundreds of starting guesses per simulation." },
-      { icon: "🎯", label: "Target", text: "Bulk silicate Earth abundances of Fe, Si, Ni, Co, Nb, Ta, V and Cr, plus the Nb/Ta ratio, scored with a reduced χ²." },
+    numbers: [
+      { value: "164", label: "Earth analogs from six formation scenarios" },
+      { value: "0.1 – 0.2 au", label: "width of the redox transition near 1 au" },
+      { value: "< 0.3", label: "Theia's mass relative to the proto-Earth" },
     ],
-    did: [
-      "Validated the model runs across the suite of 164 Earth-analog simulations.",
-      "Carried out formal analysis and investigation of the fitted parameters, goodness-of-fit and Theia / Proto-Earth properties.",
-      "Curated the dataset, and contributed to reviewing and editing the manuscript.",
-    ],
-    found: [
-      "Earth can be built many ways. Every scenario fits the mantle well (mean χ² ≈ 3.4) and none clearly wins, as long as the disk has a redox gradient and Earth grows from both reduced and oxidized material.",
-      "Earth accreted increasingly oxidized material as it grew. Reversing the order of accretion made fits much worse (χ² ≈ 440 versus ≈ 98 in controlled tests).",
-      "Nearly every successful fit needs a sharp reduced-to-oxidized transition over just 0.1–0.2 au, near 1 au.",
-      "Theia was probably small, with a mass below about 0.3 of the proto-Earth. A small Theia could have a mantle FeO anywhere from roughly 0 to 30 wt%, whereas a large Theia must have resembled today's Earth (≈ 8 wt% FeO).",
-      "The size of the first embryo, where Earth's building blocks came from, and when the Moon-forming impact occurred do not control how well Earth is reproduced.",
-    ],
-    note: "The model is flexible, so matching Earth does not prove any one scenario. The very sharp redox transition it requires may reflect geochemical constraints rather than the true disk. A next step is to test whether such gradients are physically plausible.",
+    note: "The model is flexible, so fitting Earth doesn't prove any one scenario. Whether such a sharp redox jump is physical is still open.",
     figures: [
-      { src: "/research/earth-multistage-differentiation.webp", alt: "Diagram of a projectile embryo hitting a target embryo, creating a melt pond where metal and silicate equilibrate", caption: "How the model works. Each impact creates a melt pond where metal and silicate equilibrate before metal sinks to the core." },
-      { src: "/research/earth-best-fit-gradients.webp", alt: "Best-fit iron and silicon oxidation gradients versus distance for Grand Tack, Classical and Annulus scenarios", caption: "Best-fit disk redox gradients for each scenario class. They are alike: reduced inside about 1 au, oxidized beyond." },
-      { src: "/research/earth-fe-metal-during-accretion.webp", alt: "Fraction of iron in metal in accreted material versus Earth mass accreted for six scenarios", caption: "Earth grows from increasingly oxidized material. The metallic iron fraction of accreted material falls as Earth accretes." },
-      { src: "/research/earth-theia-size-schematic.webp", alt: "Two schematics of a small and a large Theia hitting the Proto-Earth with ranges of mantle FeO", caption: "A small Theia (left) allows a wide range of compositions and better Earth matches than an Earth-sized Theia (right)." },
+      { src: "/research/earth-theia-size-schematic.webp", alt: "Two schematics of a small and a large Theia hitting the Proto-Earth with ranges of mantle FeO", caption: "A small Theia (left) allows a wide range of compositions. An Earth-sized Theia (right) has to look like Earth." },
+      { src: "/research/earth-multistage-differentiation.webp", alt: "Diagram of a projectile embryo hitting a target embryo, creating a melt pond where metal and silicate equilibrate", caption: "Each impact makes a melt pond where metal and silicate equilibrate before the metal sinks." },
+      { src: "/research/earth-best-fit-gradients.webp", alt: "Best-fit iron and silicon oxidation gradients versus distance for Grand Tack, Classical and Annulus scenarios", caption: "Best-fit disk redox gradients: reduced inside about 1 au, oxidized beyond." },
+      { src: "/research/earth-fe-metal-during-accretion.webp", alt: "Fraction of iron in metal in accreted material versus Earth mass accreted for six scenarios", caption: "The metal fraction of what Earth accretes drops as it grows." },
     ],
     links: [],
   },
@@ -142,113 +94,103 @@ const projects = [
 ---
 
 <BaseLayout title="Research" sideBarActiveItemID="projects">
-  <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-    Research
-  </h1>
-  <div class="h-1.5 w-24 rounded-full bg-primary mb-6"></div>
-  <p class="text-xl md:text-2xl leading-relaxed mb-6">
-    I study how planets and moons get their chemistry and their structure. My work links the dust in
-    young planet-forming disks to the giant impacts that built Earth and the Moon, using numerical
-    simulations of dust, radiation, and core formation.
-  </p>
+  <div class="w-full">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+      Research
+    </h1>
+    <div class="h-1.5 w-24 rounded-full bg-primary mb-6"></div>
+    <p class="text-xl md:text-2xl leading-relaxed mb-6">
+      I study how planets and moons get their chemistry and structure, from the dust in young disks
+      to the giant impacts that built Earth and the Moon. Most of what I do is numerical simulation.
+    </p>
 
-  <div class="flex flex-wrap gap-3 mb-14">
-    {projects.map((p, i) => (
-      <a href={`#${p.id}`} class="btn btn-outline btn-primary btn-md text-base normal-case">
-        <span class="font-mono opacity-70">{String(i + 1).padStart(2, "0")}</span> {p.short}
-      </a>
-    ))}
-  </div>
+    <div class="flex flex-wrap gap-3 mb-14">
+      {projects.map((p) => (
+        <a href={`#${p.id}`} class="btn btn-outline btn-primary btn-md text-base normal-case">
+          {p.emoji} {p.short}
+        </a>
+      ))}
+    </div>
 
-  <div class="space-y-20">
-    {projects.map((p, i) => (
-      <article id={p.id} class="scroll-mt-6 border-t-4 border-primary/40 pt-10">
-        <div>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class={`badge badge-lg ${statusStyle[p.status]}`}>{p.status}</span>
-            <span class="badge badge-lg badge-ghost">{p.place}</span>
-            <span class="badge badge-lg badge-ghost">{p.when}</span>
-          </div>
-
-          <div class="mt-4 font-mono text-sm font-bold tracking-widest text-primary">
-            PROJECT {String(i + 1).padStart(2, "0")}
-          </div>
-          <h2 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">{p.title}</h2>
-          <div class="h-1 w-16 rounded-full bg-primary mt-3"></div>
-          <div class="text-2xl text-base-content/80 mt-3">{p.subtitle}</div>
-          <div class="text-lg text-base-content/60">{p.team}</div>
-
-          <div class="mt-6 rounded-r-xl border-l-8 border-primary bg-primary/10 px-5 py-4">
-            <div class="text-sm font-bold uppercase tracking-widest text-primary mb-1">Research question</div>
-            <p class="text-2xl md:text-3xl font-semibold leading-snug">{p.question}</p>
-          </div>
-
-          <h3 class="mt-10 mb-3 flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-primary">
-            The big picture <span class="h-px flex-1 bg-primary/30"></span>
-          </h3>
-          <div class="space-y-4 text-xl md:text-2xl leading-relaxed">
-            {p.plain.map((para) => <p>{para}</p>)}
-          </div>
-
-          <h3 class="mt-10 mb-3 flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-primary">
-            The approach <span class="h-px flex-1 bg-primary/30"></span>
-          </h3>
-          <ul class="space-y-3 text-xl md:text-2xl leading-relaxed">
-            {p.approach.map((a) => (
-              <li class="flex gap-3">
-                <span>{a.icon}</span>
-                <span><strong>{a.label}:</strong> {a.text}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div class="space-y-10 mt-10">
-            <div class="border-l-4 border-primary pl-5">
-              <h3 class="text-3xl font-extrabold mb-4">Method</h3>
-              <ul class="list-disc list-outside ml-6 space-y-3 text-xl md:text-2xl leading-relaxed">
-                {p.did.map((d) => <li>{d}</li>)}
-              </ul>
+    <div class="space-y-20">
+      {projects.map((p) => {
+        const [lead, ...more] = p.figures;
+        return (
+          <article id={p.id} class="w-full scroll-mt-6 border-t-4 border-primary/40 pt-10">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class={`badge badge-lg ${statusStyle[p.status]}`}>{p.status}</span>
+              <span class="badge badge-lg badge-ghost">{p.place}</span>
+              <span class="badge badge-lg badge-ghost">{p.when}</span>
             </div>
-            <div class="border-l-4 border-secondary pl-5">
-              <h3 class="text-3xl font-extrabold mb-4">Results</h3>
-              <ul class="list-disc list-outside ml-6 space-y-3 text-xl md:text-2xl leading-relaxed">
-                {p.found.map((f) => <li>{f}</li>)}
-              </ul>
-            </div>
-          </div>
 
-          <h3 class="mt-12 mb-4 flex items-center gap-3 text-sm md:text-base font-bold uppercase tracking-widest text-primary">
-            Figures <span class="h-px flex-1 bg-primary/30"></span>
-          </h3>
-          <div class="space-y-8">
-            {p.figures.map((f) => (
-              <figure>
-                <a href={f.src} target="_blank" rel="noopener" title="Open full size">
+            <h2 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">{p.title}</h2>
+            <div class="h-1 w-16 rounded-full bg-primary mt-3"></div>
+            <div class="text-lg text-base-content/60 mt-3">{p.team}</div>
+
+            <div class="mt-6 space-y-4 text-xl md:text-2xl leading-relaxed">
+              {p.overview.map((para) => <p>{para}</p>)}
+            </div>
+
+            <dl class="mt-8 grid gap-6 sm:grid-cols-3">
+              {p.numbers.map((n) => (
+                <div class="border-l-4 border-primary pl-4">
+                  <dt class="text-3xl md:text-4xl font-extrabold text-primary">{n.value}</dt>
+                  <dd class="text-lg text-base-content/80 leading-snug mt-1">{n.label}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {lead && (
+              <figure class="mt-10">
+                <a href={lead.src} target="_blank" rel="noopener" title="Open full size">
                   <img
-                    src={f.src}
-                    alt={f.alt}
+                    src={lead.src}
+                    alt={lead.alt}
                     loading="lazy"
                     class="w-full h-auto max-h-[85vh] object-contain mx-auto rounded bg-white"
                   />
                 </a>
-                <figcaption class="text-lg md:text-xl text-base-content/80 mt-3 leading-snug">{f.caption}</figcaption>
+                <figcaption class="text-lg md:text-xl text-base-content/80 mt-3 leading-snug">{lead.caption}</figcaption>
               </figure>
-            ))}
-          </div>
+            )}
 
-          <div role="note" class="alert mt-8 text-lg md:text-xl">
-            <span><strong>Caveat:</strong> {p.note}</span>
-          </div>
+            {more.length > 0 && (
+              <details class="mt-6">
+                <summary class="cursor-pointer text-lg font-bold text-primary">
+                  More figures ({more.length})
+                </summary>
+                <div class="space-y-8 mt-6">
+                  {more.map((f) => (
+                    <figure>
+                      <a href={f.src} target="_blank" rel="noopener" title="Open full size">
+                        <img
+                          src={f.src}
+                          alt={f.alt}
+                          loading="lazy"
+                          class="w-full h-auto max-h-[85vh] object-contain mx-auto rounded bg-white"
+                        />
+                      </a>
+                      <figcaption class="text-lg md:text-xl text-base-content/80 mt-3 leading-snug">{f.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </details>
+            )}
 
-          {p.links.length > 0 && (
-            <div class="card-actions mt-4">
-              {p.links.map((l) => (
-                <a class="btn btn-outline btn-primary" href={l.href} target="_blank">{l.label} →</a>
-              ))}
+            <div role="note" class="alert mt-8 text-lg md:text-xl">
+              <span><strong>Caveat:</strong> {p.note}</span>
             </div>
-          )}
-        </div>
-      </article>
-    ))}
+
+            {p.links.length > 0 && (
+              <div class="card-actions mt-4">
+                {p.links.map((l) => (
+                  <a class="btn btn-outline btn-primary" href={l.href} target="_blank" rel="noopener">{l.label} →</a>
+                ))}
+              </div>
+            )}
+          </article>
+        );
+      })}
+    </div>
   </div>
 </BaseLayout>
